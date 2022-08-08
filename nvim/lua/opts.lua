@@ -4,6 +4,9 @@ local opt = vim.opt
 opt.number = true
 opt.relativenumber = true
 
+-- Split new buffer below
+opt.splitbelow = true
+
 -- Tabs
 opt.tabstop = 8
 opt.softtabstop = 0
