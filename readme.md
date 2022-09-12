@@ -10,7 +10,7 @@ For those that are not that much familiar with program configurations I made bel
 
 ## Programs 
 
-- [nvim](https://github.com/neovim/neovim)
+- [nvim](https://github.com/neovim/neovim) (recommended to download from github's realease page or build it yourself. Repos are not up-to-date with neovim)
 - [tmux](https://github.com/tmux/tmux) (can be easily installed with `apt install`. Currently Ubuntu's repos are up-to-date)
 - [i3-gaps](https://github.com/Airblader/i3) (also can be easily installed with `apt install`)
 
