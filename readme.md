@@ -134,9 +134,33 @@ once you are inside nvim to properly install plugins.
 
 ## tmux
 
-Didn't modify a bit. Like the way it is.
+For tmux i changed some bindings to make it feel vim-like.
 
-I will point out some things tough. Learn how to use sessions, they are the best thing about tmux.
+```lua
+set -g default-terminal "screen-256color"
+
+# Unbind split pane
+unbind '"'
+unbind %
+
+# Bind splitting panes
+bind - split-window -v
+bind | split-window -h
+
+# VIM like panel switching
+bind h select-pane -L
+bind j select-pane -D
+bind k select-pane -U
+bind l select-pane -R
+
+# Resize the current pane using Alt + direction
+bind -n C-k resize-pane -U 5
+bind -n C-j resize-pane -D 5
+bind -n C-h resize-pane -L 5
+bind -n C-l resize-pane -R 5
+
+bind r source-file ~/.tmux.conf; display-message "Reloaded config"
+```
 
 Some commands to remember:
 
@@ -163,3 +187,5 @@ I also made some tweaks to i3:
 - `i3-blocks` for easier bar modification. Its config can be found at [i3blocks.conf](./i3/i3blocks.conf).
 - `lxappearance` and change widget to `Yaru-dark`, icon theme to `Yaru` and mouse cursor to `DMZ (Black)`.
 - [xkblayout](https://github.com/nonpop/xkblayout-state) to show keyboard layout since English is not my mother tonque
+    - Compiled binary must be pasted somewhere in your `$PATH` variable
+- `feh`
