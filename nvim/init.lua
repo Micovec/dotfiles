@@ -1,4 +1,7 @@
 require('mapping')
-require('opts')
 require('plug')
+require('opts')
 require('_telescope')
+require('_treesitter')
+require('mylsp')
+require('mylspcmp')
