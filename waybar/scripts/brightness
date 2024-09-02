@@ -1,0 +1,63 @@
+#!/usr/bin/env bash
+
+iDIR="$HOME/.config/mako/icons"
+
+# Get brightness
+get_backlight() {
+	#LIGHT=$(printf "%.0f\n" $(brightnessctl i))
+	max_backlight="$(brightnessctl m)"
+	current="$(brightnessctl g)"
+
+	echo "$((current * 100 / max_backlight)) %"
+}
+
+# Get icons
+get_icon() {
+	backlight="$(brightnessctl g)"
+	max_backlight="$(brightnessctl m)"
+	current="${backlight%%%}"
+
+	stop1="$((max_backlight / 5))"
+	stop2="$((stop1 * 2))"
+	stop3="$((stop1 * 3))"
+	stop4="$((stop1 * 4))"
+	stop5="$((stop1 * 5))"
+
+	if [[ ("$current" -ge "0") && ("$current" -le "$stop1") ]]; then
+		icon="$iDIR/brightness-20.png"
+	elif [[ ("$current" -ge "$stop1") && ("$current" -le "$stop2") ]]; then
+		icon="$iDIR/brightness-40.png"
+	elif [[ ("$current" -ge "$stop2") && ("$current" -le "$stop3") ]]; then
+		icon="$iDIR/brightness-60.png"
+	elif [[ ("$current" -ge "$stop3") && ("$current" -le "$stop4") ]]; then
+		icon="$iDIR/brightness-80.png"
+	elif [[ ("$current" -ge "$stop4") ]]; then
+		icon="$iDIR/brightness-100.png"
+	fi
+}
+
+# Notify
+notify_user() {
+	notify-send -h string:x-canonical-private-synchronous:sys-notify -u low -i "$icon" "Brightness : $(get_backlight)"
+}
+
+# Increase brightness
+inc_backlight() {
+	brightnessctl set 2%+ && get_icon && notify_user
+}
+
+# Decrease brightness
+dec_backlight() {
+	brightnessctl set 2%- && get_icon && notify_user
+}
+
+# Execute accordingly
+if [[ "$1" == "--get" ]]; then
+	brightnessctl g
+elif [[ "$1" == "--inc" ]]; then
+	inc_backlight
+elif [[ "$1" == "--dec" ]]; then
+	dec_backlight
+else
+	get_backlight
+fi
