@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# A little hack for wlogout
+sleep 0.8
+
 folder_cache="/home/jiri/.cache/hyprlock"
 print_screen_filepath="${folder_cache}/screenshot.png"
 

@@ -1,6 +1,6 @@
 {
     "label" : "lock",
-    "action" : "hyprlock",
+    "action" : "/home/jiri/.config/waybar/scripts/lock",
     "text" : "Lock"
 }
 
