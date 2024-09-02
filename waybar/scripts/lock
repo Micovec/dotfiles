@@ -1,0 +1,18 @@
+#!/bin/bash
+
+folder_cache="/home/jiri/.cache/hyprlock"
+print_screen_filepath="${folder_cache}/screenshot.png"
+
+# Make sure that a folder for the screenshot exist
+mkdir -p "$folder_cache"
+
+# If the printscreen file exist -> delete it
+if [ -e "$print_screen_filepath" ]; then
+    rm "$print_screen_filepath"
+fi
+
+# Specify your monitor
+grim -o eDP-1 "$print_screen_filepath"
+
+# Run hyprlock
+hyprlock
