@@ -18,13 +18,18 @@ opt.expandtab = true
 opt.shiftwidth = 4
 opt.smarttab = true
 
+-- Clipboard
+opt.clipboard = "unnamedplus"
+
 -- Gruvbox theme
 g.gruvbox_contrast_dark = 'dark'
-vim.cmd([[autocmd vimenter * ++nested colorscheme gruvbox]])
+--vim.cmd([[autocmd vimenter * ++nested colorscheme gruvbox]])
+vim.cmd([[autocmd vimenter * ++nested colorscheme juliana]])
 
 -- Lualine
 require('lualine').setup{
-    options = { theme = 'gruvbox' }
+    --options = { theme = 'gruvbox' }
+    options = { theme = 'juliana' }
 }
 
 -- lspcmp
