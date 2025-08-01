@@ -11,3 +11,6 @@ There are some configuration files that are tied to my specific computer, such a
     - folder cache: `folder_cache="<folder cache>"`
 - Wallpaper:
     - Edit `~/.config/hypr/hyprpaper.conf` and put there your own wallpaper
+- Keyboard (if you use multiple languages):
+    - Run `hyprctl devices` and find the keyboard that switches languages
+    - Put its name in `~/.config/waybar/config` file under section `hyprland/language:keyboard-name`
